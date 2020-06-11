@@ -1,0 +1,9 @@
+php artisan make:migration create_students_table
+php artisan migrate
+
+php artisan make:model student
+
+php artisan make:controller studentController
+php artisan make:controller studentController --resource
+
+php artisan db:seed

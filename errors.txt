@@ -1,0 +1,68 @@
+action="{{ action('studentController@store') }}"
+
+<div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Crud With Bootstrap Model</h2>
+                </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#exampleModal">
+              Add New Student
+            </button>
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if(\Session::has('success'))
+                <div class="alert alert-success">
+                    <p>{{\Session::get('success')}}</p>
+                </div>
+            @endif
+            <!-- Modal -->
+            {{--start add model --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Add New Student
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{{route('insert')}}" method="post">
+                    <div class="modal-body">
+                            {{csrf_field()}}
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" name="name" class="form-control" placeholder="Please Enter Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="conactNumber">Contact Number:</label>
+                                <input type="text" name="contactNumber" class="form-control" placeholder="Please Enter Your Contact Number">
+                            </div>
+                            <div class="form-group">
+                               <label for="address">Address:</label>
+                               <textarea rows="5" name="Address" class="form-control" style="resize: none;" placeholder="Please Enter Your Contact Number"></textarea>
+                           </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="btnRegister" class="btn btn-success">Add Now</button>
+                    </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+            {{--end add model--}}
+        </div>
+        </div>
+        </div>
